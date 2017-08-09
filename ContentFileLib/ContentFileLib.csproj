@@ -1,0 +1,32 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>netstandard1.0</TargetFramework>
+
+    <!-- This is going to be a no-code package -->
+    <DisableImplicitFrameworkReferences>true</DisableImplicitFrameworkReferences>
+    <EnableDefaultItems>false</EnableDefaultItems>
+    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <IncludeBuildOutput>false</IncludeBuildOutput>
+    <NoBuild>true</NoBuild>
+    <!-- don't warn about no code and no RuntimeMetadataVersion -->
+    <NoWarn>$(NoWarn);CS2008;CS8021</NoWarn>
+    
+    <!-- set up packing via nuspec -->
+    <NuspecFile>$(MSBuildThisFileDirectory)$(MSBuildProjectName).nuspec</NuspecFile>
+
+    <!-- pack into the parent's nupkgs folder -->
+    <PackageOutputPath>..\nupkgs\</PackageOutputPath>
+  </PropertyGroup>
+
+  <Target Name="SetNuspecProperties" BeforeTargets="GenerateNuspec">
+    <PropertyGroup>
+      <NuspecProperties>$(NuspecProperties);id=$(AssemblyName)</NuspecProperties>
+      <NuspecProperties>$(NuspecProperties);config=$(Configuration)</NuspecProperties>
+      <NuspecProperties>$(NuspecProperties);version=$(PackageVersion)</NuspecProperties>
+      <NuspecProperties>$(NuspecProperties);description=$(Description)</NuspecProperties>
+      <NuspecProperties>$(NuspecProperties);authors=$(Authors)</NuspecProperties>
+    </PropertyGroup>
+  </Target>
+
+</Project>

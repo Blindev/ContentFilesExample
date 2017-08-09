@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>$id$</id>
+    <version>$version$</version>
+    <authors>$authors$</authors>
+    <requireLicenseAcceptance>false</requireLicenseAcceptance>
+    <description>$description$</description>
+    <contentFiles>
+      <files include="**/*.txt" buildAction="Content" copyToOutput="true" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="*.txt" target="content" />
+    <file src="*.txt" target="contentFiles/any/any" />
+  </files>
+</package>
